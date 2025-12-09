@@ -5,7 +5,7 @@ import os
 
 
 if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = "AIzaSyA9lKqmwFoPT-c0fcbr3Lisl1TaOJG3X28"
+    os.environ["GOOGLE_API_KEY"] = ""
 
 model = ChatGoogleGenerativeAI(
     model="gemini-3-pro-preview",
