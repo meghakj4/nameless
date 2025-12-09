@@ -1,22 +1,46 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Need API Key in env to work.
+# Initialize the model
 model = ChatGoogleGenerativeAI(
     model="gemini-3-pro-preview",
-    temperature=0.01,  # Gemini 3.0+ defaults to 1.0
+    temperature=0.01,
     max_tokens=None,
     timeout=None,
     max_retries=2,
-    # other params...
 )
 
+def chat_bot():
+    """Interactive command line chatbot"""
+    print("=" * 50)
+    print("Welcome to the Interactive Chatbot!")
+    print("Type 'exit' or 'quit' to end the conversation")
+    print("=" * 50)
+    print()
+    
+    while True:
+        # Get user input
+        user_input = input("You: ").strip()
+        
+        # Exit condition
+        if user_input.lower() in ['exit', 'quit']:
+            print("\nChatbot: Goodbye! Thanks for chatting.")
+            break
+        
+        # Skip empty inputs
+        if not user_input:
+            print("Chatbot: Please enter a question or message.\n")
+            continue
+        
+        try:
+            # Get response from the model
+            response = model.invoke(user_input)
+            print(f"\nChatbot: {response.content}\n")
+        
+        except Exception as e:
+            print(f"\nChatbot: Sorry, an error occurred: {str(e)}\n")
 
-
-response = model.invoke("WHen was shakespeare born?")
-print(response.content)
-# print(response.generations[0][0].text)
-
-
+if __name__ == "__main__":
+    chat_bot()
 
 ####
 # Step 1=> Built simple terminal chatbot with single subject context
