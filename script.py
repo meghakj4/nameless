@@ -1,5 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+# Need API Key in env to work.
 model = ChatGoogleGenerativeAI(
     model="gemini-3-pro-preview",
     temperature=0.01,  # Gemini 3.0+ defaults to 1.0
