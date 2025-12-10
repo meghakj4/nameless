@@ -4,3 +4,7 @@ langchain-community
 pypdf
 faiss-cpu
 python-dotenv
+langchain-text-splitters
+google-generativeai
+sentence-transformers
+langchain-huggingface
